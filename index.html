@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Self-Sovereign Marketing Manifesto</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --sovereign-blue: #3A9BC9;      /* Sovereign Blue */
+      --deep-sovereign-blue: #0E415F; /* Deep Sovereign Blue */
+      --network-orange: #F28A30;      /* Network Orange */
+      --grey: #A9A9A9;                /* Steel Grey */
+      --black: #000000;               /* Authority Black */
+      --white: #FFFFFF;               /* Pure White */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: var(--white);
+      color: var(--deep-sovereign-blue);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    .hero {
+      text-align: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      color: var(--grey);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 4vw, 2.8rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      max-width: 32rem;
+      color: var(--deep-sovereign-blue);
+      margin-bottom: 1.75rem;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-spacing {
+      margin-top: 3rem;
+    }
+
+    .section-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--deep-sovereign-blue);
+      margin-bottom: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .section-label:first-child {
+      margin-top: 0;
+    }
+
+    .axiom {
+      background: linear-gradient(135deg, var(--sovereign-blue) 0%, var(--deep-sovereign-blue) 100%);
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0 3rem;
+      text-align: center;
+    }
+
+    .axiom-text {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .pillars {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 720px) {
+      .pillars {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .pillar {
+      border-top: 4px solid var(--sovereign-blue);
+      padding-top: 1.25rem;
+      background: var(--white);
+      border-radius: 4px;
+      padding: 1.25rem 1rem 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .pillar:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .pillar:nth-child(2),
+    .pillar:nth-child(3) {
+      border-top-color: var(--network-orange);
+    }
+
+    .pillar-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .pillar-body {
+      font-size: 0.9rem;
+      color: var(--deep-sovereign-blue);
+      line-height: 1.5;
+    }
+
+    .core-values {
+      counter-reset: value-counter;
+      margin-top: 3rem;
+    }
+
+    .core-values .pillars {
+      gap: 1rem;
+    }
+
+    .core-values .pillar {
+      border-top: none;
+      background: linear-gradient(135deg, rgba(58, 155, 201, 0.05) 0%, rgba(14, 65, 95, 0.05) 100%);
+      border-left: 4px solid var(--sovereign-blue);
+      position: relative;
+      counter-increment: value-counter;
+    }
+
+    .core-values .pillar:nth-child(2),
+    .core-values .pillar:nth-child(3) {
+      border-left-color: var(--network-orange);
+      background: linear-gradient(135deg, rgba(242, 138, 48, 0.05) 0%, rgba(242, 138, 48, 0.02) 100%);
+    }
+
+    .core-values .pillar::before {
+      content: counter(value-counter);
+      position: absolute;
+      top: 1.25rem;
+      left: 1rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--deep-sovereign-blue);
+      opacity: 0.8;
+    }
+
+    .core-values .pillar:nth-child(2)::before,
+    .core-values .pillar:nth-child(3)::before {
+      color: var(--network-orange);
+    }
+
+    .core-values .pillar-title {
+      padding-left: 2.5rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.4;
+      color: var(--black);
+    }
+
+    .core-values .pillar-body {
+      padding-left: 2.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .footer-section {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--grey);
+      text-align: center;
+    }
+
+    .blockquote {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--deep-sovereign-blue);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: var(--grey);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-kicker">Declaration of Sovereignty</div>
+      <h1>Self-Sovereign Marketing</h1>
+      <p class="hero-subtitle">
+        Self-Sovereign Marketing is the practice of building direct, durable, consent-based relationships that survive beyond any platform. It's a movement for marketers who want to own their origin, respect their audience, and grow without dependency on any single platform.
+      </p>
+    </header>
+
+    <section class="axiom">
+      <div class="section-label">Axiom</div>
+      <p class="axiom-text">
+        <strong>People are nodes. Networks are roads.</strong>
+      </p>
+    </section>
+
+    <section class="section-spacing" aria-labelledby="pillars-heading">
+      <div class="section-label" id="pillars-heading">Four Pillars</div>
+      <div class="pillars">
+        <article class="pillar">
+          <h2 class="pillar-title">Own Your Origin</h2>
+          <p class="pillar-body">
+            Control your name, identity, domain, data, and core platform. Your foundation must be yours, so no platform can define or limit who you are and what you do.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Participate in Public</h2>
+          <p class="pillar-body">
+            Engage in the ideas and changes shaping your world to remain visible, relevant, and connected. Show up where your people are because meaningful connections matter more than platform preferences.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Prioritise People Over Platforms</h2>
+          <p class="pillar-body">
+            Prioritise real, permission-based relationships. Remember there are people behind every metric. Leverage platforms and algorithms as tools, not an end in themselves.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Establish Direct Reach and Revenue</h2>
+          <p class="pillar-body">
+            Build and sustain owned channels for your audience and income. If a single platform can silence or stop your business, you are not sovereign.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="core-values section-spacing" aria-labelledby="values-heading">
+      <div class="section-label" id="values-heading">Core Values</div>
+      <div class="pillars">
+        <article class="pillar">
+          <h2 class="pillar-title">Communicate with Clarity</h2>
+          <p class="pillar-body">
+            Clear communication earns trust faster, reduces friction, and makes people more willing to engage, buy, and return. In an increasingly noisy landscape, clarity becomes a competitive edge because people respond to what they understand and trust compounds.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Act with Integrity</h2>
+          <p class="pillar-body">
+            Integrity builds a reputation based on trust, which makes you harder to replace. When your actions consistently match your claims, you build relationships that exist independently of any platform.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Commit to Consent</h2>
+          <p class="pillar-body">
+            Permission-based relationships outperform captive audiences because consent sets the foundation for trust. When people choose to engage or share information, their intent is explicit and voluntary. Consent creates loyalty that cannot be bought.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <h2 class="pillar-title">Respect Autonomy</h2>
+          <p class="pillar-body">
+            When people are free to choose how they engage and change their preferences at any time, the relationship stays aligned and mutually valuable. Autonomy builds stronger and more resilient relationships because every action reflects a real choice made on their own terms.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer-section">
+      <blockquote class="blockquote">
+        People are nodes. Networks are roads.<br/>Participate in public. Build sovereign connections.
+      </blockquote>
+      <p class="footer-note">
+        CC0: take it, use it, remix it.<br/>Self-Sovereign Marketing belongs to those who practice it.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
